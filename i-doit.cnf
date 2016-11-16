@@ -1,0 +1,44 @@
+[Mysqld]
+
+# This is the number 1 setting to look at for any performance optimization
+# It is where the data and indexes are cached: having it as large as possible will
+# Ensure MySQL uses memory and not disks for most read operations.
+#
+# Typical values are 1G (1-2GB), 5-6g (8GB RAM), 20-25g (32GB RAM), 100-120G (128GB RAM).
+innodb_buffer_pool_size = 1G 
+innodb_buffer_pool_instances = 1 #use multiple instances if you have
+# Innodb_buffer_pool_size> 10G, 1 every 4GB
+
+# Redo log file size, the higher the better.
+# MySQL writes two of synthesis log files in a default installation.
+innodb_log_file_size = 512M
+
+innodb_sort_buffer_size = 64M
+sort_buffer_size = 262144 #default
+join_buffer_size = 262144 #default
+
+max_allowed_packet = 128M
+max_heap_table_size = 16M
+query_cache_min_res_unit = 4096
+query_cache_type = 1
+query_cache_limit = 5M
+query_cache_size = 80M
+
+#tmp_table_size = 32M
+table_cache = 256
+max_connections = 200
+innodb_file_per_table = 1
+
+# Disable this if you have only one to two CPU cores (= 0), change it to 4 for a quad core.
+innodb_thread_concurrency = 0
+
+# Disable this if you have slow harddisks (= 0)
+innodb_flush_log_at_trx_commit = 1
+innodb_flush_method = O_DIRECT
+
+innodb_lru_scan_depth = 2048
+table_definition_cache = 1024
+table_open_cache = 2048
+#table_open_cache_instances = 4 # Only if your have MySQL 5.6 or higher, do not use with MariaDB!
+sql-mode =""
+
