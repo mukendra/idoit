@@ -1,7 +1,7 @@
 from ubuntu:14.04
 maintainer mukki
 RUN apt-get update
-RUN apt-get -y install wget
+RUN apt-get -y install wget git
 RUN apt-get install -y  apache2 libapache2-mod-php5 php5 php5-cli php5-common php5-curl php5-gd php5-json php5-ldap php5-mcrypt php5-mysqlnd php5-pgsql unzip
 RUN apt-get -y  install mysql-client-5.6
 RUN php5enmod mcrypt && sudo service apache2 restart
