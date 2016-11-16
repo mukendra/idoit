@@ -7,7 +7,7 @@ RUN apt-get -y  install mysql-client-5.6
 RUN php5enmod mcrypt && sudo service apache2 restart
 WORKDIR /opt
 RUN git clone https://github.com/mukendra/idoit.git
-RUN cp /opt/i-doit.ini /etc/php5/mods-available/
+RUN cp i-doit.ini /etc/php5/mods-available/
 RUN php5enmod i-doit
 RUN service apache2 restart
 RUN ln -s /etc/php5/mods-available/i-doit.ini/etc/php5/conf.d/
